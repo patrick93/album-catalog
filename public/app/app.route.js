@@ -11,6 +11,11 @@ function route($stateProvider, $urlServiceProvider) {
     url: '/search',
     component: 'search'
   });
+
+  $stateProvider.state('albums', {
+    url: '/{collectionId}/albums',
+    component: 'albums'
+  });
 }
 
 export { route };
