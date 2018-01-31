@@ -26,12 +26,23 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({  
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader'}
-          ],
+          use: [{ loader: 'css-loader' }]
         })
+      },
+      {
+        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/', // where the fonts will go
+              publicPath: '../' // override the default path
+            }
+          }
+        ]
       }
     ]
   },
@@ -46,6 +57,6 @@ module.exports = {
       filename: 'vendor.js',
       minChunks: Infinity
     }),
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin('styles.css')
   ]
 };
