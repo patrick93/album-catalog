@@ -1,11 +1,11 @@
-<div class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{$ctrl.album.title}}</h5>
-        <div>
-            <span class="fa fa-pencil" style="margin-right: 5px;"></span>
-            <span class="fa fa-trash"></span>
+<div class="list-group-item">
+    <div class="list-group-item-heading" style="margin-top: 5px;">
+        <h4 style="display: inline-block; margin: 0;">{{$ctrl.album.title}}</h4>
+        <div style="float: right">
+            <span class="fa fa-pencil" style="margin-right: 5px; cursor: pointer;" ng-click="$ctrl.edit()"></span>
+            <span class="fa fa-trash" style=" cursor: pointer;" ng-click="$ctrl.delete()"></span>
         </div>
     </div>
-    <p class="mb-1">{{$ctrl.album.artist}}</p>
+    <p class="list-group-item-text">{{$ctrl.album.artist}}</p>
     <small>{{$ctrl.album.record}} - {{$ctrl.album.year}}</small>
 </div>

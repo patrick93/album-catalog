@@ -1,16 +1,33 @@
-import template from './album.html'
+import template from './album.html';
 
 class AlbumController {
-    constructor() {
-    }
+  constructor() {}
+
+  edit() {
+    this.onEdit({
+      $event: {
+        album: this.album
+      }
+    });
+  }
+
+  delete() {
+      this.onDelete({
+          $event: {
+              album: this.album
+          }
+      });
+  }
 }
 
 AlbumController.$inject = [];
 
 export const AlbumComponent = {
-    bindings: {
-        album: '<'
-    },
-    template,
-    controller: AlbumController
-}
+  bindings: {
+    album: '<',
+    onEdit: '&',
+    onDelete: '&'
+  },
+  template,
+  controller: AlbumController
+};
