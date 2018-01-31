@@ -1,10 +1,10 @@
 route.$inject = ['$stateProvider', '$urlServiceProvider'];
 function route($stateProvider, $urlServiceProvider) {
-  $urlServiceProvider.rules.otherwise({ state: 'catalog' });
+  $urlServiceProvider.rules.otherwise({ state: 'collections' });
 
-  $stateProvider.state('catalog', {
+  $stateProvider.state('collections', {
     url: '/',
-    component: 'catalog'
+    component: 'collections'
   });
 
   $stateProvider.state('search', {

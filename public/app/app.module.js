@@ -10,7 +10,7 @@ import { route } from './app.route';
 import { AppComponent } from './app.component';
 import { CommonModule } from './components/common/common.module';
 import { SearchModule } from './components/search/search.module';
-import { CatalogModule } from './components/catalog/catalog.module';
+import { CollectionModule } from './components/collection/collection.module';
 import { AlbumsModule } from './components/albums/albums.module';
 
 export const AppModule = angular
@@ -19,7 +19,7 @@ export const AppModule = angular
     uiBootstrap,
     CommonModule,
     SearchModule,
-    CatalogModule,
+    CollectionModule,
     AlbumsModule
   ])
   .config(route)
