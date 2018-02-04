@@ -4,7 +4,11 @@ function collectionService(repository) {
         return repository.getCollections();
     }
 
-    return { getCollections }
+    function addCollection(name) {
+        return repository.addCollection(name);
+    }
+
+    return { getCollections, addCollection }
 }
 
 module.exports = { collectionService }

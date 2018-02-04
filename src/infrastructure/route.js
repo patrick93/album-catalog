@@ -1,11 +1,14 @@
 const express = require('express');
 
 function router(collectionController) {
-    const router = express.Router();
-    
-    router.route('/collections').get(collectionController.getCollections)
+  const router = express.Router();
 
-    return router;
+  router
+    .route('/collections')
+    .get(collectionController.getCollections)
+    .post(collectionController.addCollection);
+
+  return router;
 }
 
-module.exports = { router }
+module.exports = { router };

@@ -1,12 +1,7 @@
 const mysql = require('mysql');
 
-function repository() {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'albums_collection'
-  });
+function repository(connectionConfig) {
+  const connection = mysql.createConnection(connectionConfig);
 
   function getCollections() {
 
@@ -20,7 +15,18 @@ function repository() {
     return promise;
   }
 
-  return { getCollections };
+  function addCollection(name) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query('INSERT INTO COLLECTION (Name) VALUES (?);', [name], (error, results) => {
+        if (error) reject(error);
+        resolve(results.insertId);
+      });
+    });
+
+    return promise;
+  }
+
+  return { getCollections, addCollection };
 }
 
 module.exports = { repository };

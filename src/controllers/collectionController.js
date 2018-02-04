@@ -7,7 +7,15 @@ function collectionController(collectionService) {
         })
     }
 
-    return { getCollections }
+    function addCollection(req, res) {
+        collectionService.addCollection(req.body.Name).then((Id) => {
+            res.status(201).json({Id});
+        }).catch((err) => {
+            res.status(500).send(err);
+        })
+    }
+
+    return { getCollections, addCollection }
 }
 
 module.exports = { collectionController }
