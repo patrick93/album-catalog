@@ -8,7 +8,11 @@ function collectionService(repository) {
         return repository.addCollection(name);
     }
 
-    return { getCollections, addCollection }
+    function updateCollection(collection) {
+        return repository.updateCollection(collection);
+    }
+
+    return { getCollections, addCollection, updateCollection }
 }
 
 module.exports = { collectionService }

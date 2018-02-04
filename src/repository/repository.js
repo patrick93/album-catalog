@@ -26,7 +26,18 @@ function repository(connectionConfig) {
     return promise;
   }
 
-  return { getCollections, addCollection };
+  function updateCollection({ id, name }) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query('UPDATE COLLECTION SET Name = ? WHERE Id = ?;', [name, id], (error, results) => {
+        if (error) reject(error);
+        resolve(results);
+      });
+    });
+
+    return promise;
+  }
+
+  return { getCollections, addCollection, updateCollection };
 }
 
 module.exports = { repository };

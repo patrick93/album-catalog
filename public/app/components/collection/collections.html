@@ -8,7 +8,7 @@
             <div class="list-group-item list-group-item-action" ng-repeat="collection in $ctrl.collections">
                 <a ui-sref="albums({collectionId: collection.Id})">{{collection.Name}}</a>
                 <div style="float: right">
-                    <span class="fa fa-pencil" style="margin-right: 5px; cursor: pointer;" ng-click="$ctrl.editCollection()"></span>
+                    <span class="fa fa-pencil" style="margin-right: 5px; cursor: pointer;" ng-click="$ctrl.editCollection(collection)"></span>
                     <span class="fa fa-trash" style=" cursor: pointer;" ng-click="$ctrl.deleteCollection()"></span>
                 </div>
             </div>

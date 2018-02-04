@@ -10,6 +10,10 @@ class CollectionService {
     addCollection(Name) {
         return this.$http.post('api/collections', { Name });
     }
+
+    updateCollection(id, name) {
+        return this.$http.put(`api/collections/${id}`, { name });
+    }
 }
 
 CollectionService.$inject = ['$http'];

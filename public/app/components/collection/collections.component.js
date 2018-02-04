@@ -51,14 +51,14 @@ class CollectionsController {
       }
     );
   }
-  editCollection() {
+  editCollection(collection) {
     const modalInstance = this.$uibModal.open({
       component: 'collectionForm',
       size: 'sm',
       resolve: {
         collection: () => {
           return {
-            name: 'Collection 1'
+            name: collection.Name
           };
         }
       }
@@ -66,7 +66,15 @@ class CollectionsController {
 
     modalInstance.result.then(
       data => {
-        console.log(data);
+        this.CollectionService.updateCollection(collection.Id, data.name).then(
+          response => {
+            console.log(response);
+            this.loadCollections();
+          },
+          error => {
+            console.error(error);
+          }
+        );
       },
       () => {
         console.log('Closed');

@@ -12,10 +12,19 @@ function collectionController(collectionService) {
             res.status(201).json({Id});
         }).catch((err) => {
             res.status(500).send(err);
-        })
+        });
     }
 
-    return { getCollections, addCollection }
+    function updateCollection(req, res) {
+        const collection = { id: req.params.id, name: req.body.name }
+        collectionService.updateCollection(collection).then((Id) => {
+            res.status(200).send();
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }
+
+    return { getCollections, addCollection, updateCollection }
 }
 
 module.exports = { collectionController }
