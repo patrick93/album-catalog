@@ -9,7 +9,7 @@
                 <a ui-sref="albums({collectionId: collection.Id})">{{collection.Name}}</a>
                 <div style="float: right">
                     <span class="fa fa-pencil" style="margin-right: 5px; cursor: pointer;" ng-click="$ctrl.editCollection(collection)"></span>
-                    <span class="fa fa-trash" style=" cursor: pointer;" ng-click="$ctrl.deleteCollection()"></span>
+                    <span class="fa fa-trash" style=" cursor: pointer;" ng-click="$ctrl.deleteCollection(collection.Id)"></span>
                 </div>
             </div>
         </div>

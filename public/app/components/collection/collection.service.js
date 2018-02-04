@@ -14,6 +14,10 @@ class CollectionService {
     updateCollection(id, name) {
         return this.$http.put(`api/collections/${id}`, { name });
     }
+
+    deleteCollection(id) {
+        return this.$http.delete(`api/collections/${id}`);
+    }
 }
 
 CollectionService.$inject = ['$http'];

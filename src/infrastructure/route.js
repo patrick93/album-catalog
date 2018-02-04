@@ -8,7 +8,8 @@ function router(collectionController) {
     .post(collectionController.addCollection);
   
   router.route('/collections/:id')
-    .put(collectionController.updateCollection);
+    .put(collectionController.updateCollection)
+    .delete(collectionController.deleteCollection);
 
   return router;
 }

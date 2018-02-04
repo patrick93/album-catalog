@@ -1,4 +1,5 @@
 import template from './collections.html';
+import { error } from 'util';
 
 class CollectionsController {
   constructor($uibModal, CollectionService) {
@@ -82,8 +83,12 @@ class CollectionsController {
     );
   }
 
-  deleteCollection() {
-    console.log('Delete Collection');
+  deleteCollection(id) {
+    this.CollectionService.deleteCollection(id).then(response => {
+      this.loadCollections();
+    }, error => {
+      console.error(error);
+    })
   }
 }
 

@@ -12,7 +12,11 @@ function collectionService(repository) {
         return repository.updateCollection(collection);
     }
 
-    return { getCollections, addCollection, updateCollection }
+    function deleteCollection(id) {
+        return repository.deleteCollection(id);
+    }
+
+    return { getCollections, addCollection, updateCollection, deleteCollection }
 }
 
 module.exports = { collectionService }

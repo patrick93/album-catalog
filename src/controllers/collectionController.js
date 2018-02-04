@@ -24,7 +24,15 @@ function collectionController(collectionService) {
         });
     }
 
-    return { getCollections, addCollection, updateCollection }
+    function deleteCollection(req, res) {
+        collectionService.deleteCollection(req.params.id).then(() => {
+            res.status(200).send();
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }
+
+    return { getCollections, addCollection, updateCollection, deleteCollection }
 }
 
 module.exports = { collectionController }

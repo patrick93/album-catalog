@@ -37,7 +37,19 @@ function repository(connectionConfig) {
     return promise;
   }
 
-  return { getCollections, addCollection, updateCollection };
+  function deleteCollection(id) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query('DELETE FROM COLLECTION WHERE Id = ?;', [id], (error, results) => {
+        if (error) reject(error);
+        resolve(results);
+      });
+    });
+
+    return promise;
+  }
+
+
+  return { getCollections, addCollection, updateCollection, deleteCollection };
 }
 
 module.exports = { repository };
