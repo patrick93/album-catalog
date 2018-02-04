@@ -1,24 +1,13 @@
-export class AlbumService {
-    constructor() {
-
+class AlbumService {
+    constructor($http) {
+        this.$http = $http;
     }
 
-    getAlbums() {
-        return [
-            {
-                id: 1,
-                title: "Appetite For Destruction",
-                artist: "Guns N' Roses",
-                year: 1987,
-                record: "Geffen"
-            },
-            {
-                id: 2,
-                title: "Back in Black",
-                artist: "AC/DC",
-                year: 1980,
-                record: "Geffen"
-            }
-        ]
+    getAlbumsFromCollection(collectionId) {
+        return this.$http.get(`api/collections/${collectionId}/albums`);
     }
 }
+
+AlbumService.$inject = ['$http']
+
+export { AlbumService }

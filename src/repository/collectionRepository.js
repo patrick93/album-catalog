@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-function repository(connectionConfig) {
+function collectionRepository(connectionConfig) {
   const connection = mysql.createConnection(connectionConfig);
 
   function getCollections() {
@@ -52,4 +52,4 @@ function repository(connectionConfig) {
   return { getCollections, addCollection, updateCollection, deleteCollection };
 }
 
-module.exports = { repository };
+module.exports = { collectionRepository };

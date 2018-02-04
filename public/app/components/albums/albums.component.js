@@ -7,7 +7,11 @@ class AlbumsController {
   }
 
   $onInit() {
-    this.albums = this.AlbumService.getAlbums();
+    this.AlbumService.getAlbumsFromCollection(this.collectionId).then(response => {
+      this.albums = response.data;
+    }, error => {
+      console.error(error);
+    });
   }
 
   addAlbum() {
@@ -65,6 +69,7 @@ class AlbumsController {
 AlbumsController.$inject = ['AlbumService', '$uibModal'];
 
 export const AlbumsComponent = {
+  bindings: { collectionId: '<' },
   template,
   controller: AlbumsController
 };

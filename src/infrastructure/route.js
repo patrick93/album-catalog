@@ -1,6 +1,6 @@
 const express = require('express');
 
-function router(collectionController) {
+function router(collectionController, albumController) {
   const router = express.Router();
 
   router.route('/collections')
@@ -10,6 +10,9 @@ function router(collectionController) {
   router.route('/collections/:id')
     .put(collectionController.updateCollection)
     .delete(collectionController.deleteCollection);
+  
+  router.route('/collections/:collectionId/albums')
+    .get(albumController.getAlbumsFromCollection);
 
   return router;
 }

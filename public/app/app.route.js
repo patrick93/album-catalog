@@ -14,7 +14,12 @@ function route($stateProvider, $urlServiceProvider) {
 
   $stateProvider.state('albums', {
     url: '/{collectionId}/albums',
-    component: 'albums'
+    component: 'albums',
+    resolve: {
+      collectionId: $transition$ => {
+        return $transition$.params().collectionId;
+      }
+    }
   });
 }
 
