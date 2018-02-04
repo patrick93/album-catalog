@@ -1,8 +1,17 @@
 import template from './collections.html'
 
 class CollectionsController {
-    constructor($uibModal) {
+    constructor($uibModal, CollectionService) {
         this.$uibModal = $uibModal;
+        this.CollectionService = CollectionService;
+    }
+
+    $onInit() {
+        this.CollectionService.getCollections().then((response) => {
+            this.collections = response.data;
+        }, (error) => {
+            console.error(error);
+        })
     }
 
     addCollection() {
@@ -55,7 +64,7 @@ class CollectionsController {
     }
 }
 
-CollectionsController.$inject = ['$uibModal']
+CollectionsController.$inject = ['$uibModal', 'CollectionService']
 
 export const CollectionsComponent = {
     template,
