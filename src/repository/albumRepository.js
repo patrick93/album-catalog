@@ -18,7 +18,22 @@ function albumRepository(connectionConfig) {
     return promise;
   }
 
-  function addAlbumIntoCollection(collectionId, album) {
+  function getIdFromTitleAndArtist(title, artist) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT Id FROM ALBUM WHERE Title = ? AND Artist = ?;',
+        [title, artist],
+        (error, results) => {
+          if (error) reject(error);
+          const resultId = results.length > 0 ? results[0].Id : 0;
+          resolve(resultId);
+        }
+      );
+    });
+
+    return promise
+  }
+  function createAndAddAlbumIntoCollection(collectionId, album) {
     const { Title, Artist, Year, Record_label } = album;
     const promise = new Promise((resolve, reject) => {
       connection.beginTransaction(error => {
@@ -58,6 +73,23 @@ function albumRepository(connectionConfig) {
     });
 
     return promise;
+  }
+
+  function addAlbumIntoCollection(collectionId, albumId) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query(
+        'INSERT INTO ALBUM_COLLECTION (Collection_Id, Album_Id) VALUES (?, ?);',
+        [collectionId, albumId],
+        (erro, results) => {
+          if (erro) {
+              throw erro;
+          }
+          resolve(results);
+        }
+      );
+    });
+
+    return promise
   }
 
   function updateAlbum(id, { Title, Artist, Year, Record_label }) {
@@ -107,6 +139,8 @@ function albumRepository(connectionConfig) {
 
   return {
     getAlbumsFromCollection,
+    getIdFromTitleAndArtist,
+    createAndAddAlbumIntoCollection,
     addAlbumIntoCollection,
     updateAlbum,
     removeAlbumFromCollection,

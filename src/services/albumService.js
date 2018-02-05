@@ -4,7 +4,13 @@ function albumService(albumRepository) {
     }
 
     function addAlbumIntoCollection(collectionId, album) {
-        return albumRepository.addAlbumIntoCollection(collectionId, album);
+        return albumRepository.getIdFromTitleAndArtist(album.Title, album.Artist).then(databaseAlbumId => {
+            if(databaseAlbumId) {
+                return albumRepository.addAlbumIntoCollection(collectionId, databaseAlbumId);
+            } else {
+                return albumRepository.createAndAddAlbumIntoCollection(collectionId, album);
+            }
+        });
     }
 
     function updateAlbum(id, album) {
