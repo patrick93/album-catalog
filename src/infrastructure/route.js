@@ -12,7 +12,12 @@ function router(collectionController, albumController) {
     .delete(collectionController.deleteCollection);
   
   router.route('/collections/:collectionId/albums')
-    .get(albumController.getAlbumsFromCollection);
+    .get(albumController.getAlbumsFromCollection)
+    .post(albumController.addAlbumIntoCollection);
+  
+  router.route('/collections/:collectionId/albums/:albumId')
+    .put(albumController.updateAlbum)
+    .delete(albumController.removeAlbumFromCollection);
 
   return router;
 }

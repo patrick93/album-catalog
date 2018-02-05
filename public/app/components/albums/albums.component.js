@@ -7,37 +7,51 @@ class AlbumsController {
   }
 
   $onInit() {
-    this.AlbumService.getAlbumsFromCollection(this.collectionId).then(response => {
-      this.albums = response.data;
-    }, error => {
-      console.error(error);
-    });
+    this.loadAlbums();
+  }
+
+  loadAlbums() {
+    this.AlbumService.getAlbumsFromCollection(this.collectionId).then(
+      response => {
+        this.albums = response.data;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   addAlbum() {
     const modalInstance = this.$uibModal.open({
-        component: 'albumFormComponent',
-        size: 'lg',
-        resolve: {
-            album: () => {
-                return {
-                    title: '',
-                    artist: '',
-                    record: '',
-                    year: ''
-                }
-            }
+      component: 'albumFormComponent',
+      size: 'lg',
+      resolve: {
+        album: () => {
+          return {
+            Title: '',
+            Artist: '',
+            Record_label: '',
+            Year: ''
+          };
         }
-      });
-  
-      modalInstance.result.then(
-        data => {
-          console.log(data);
-        },
-        () => {
-          console.log('Closed');
-        }
-      );
+      }
+    });
+
+    modalInstance.result.then(
+      data => {
+        this.AlbumService.addAlbumIntoCollection(this.collectionId, data).then(
+          response => {
+            this.loadAlbums();
+          },
+          error => {
+            console.error(error);
+          }
+        );
+      },
+      () => {
+        console.log('Closed');
+      }
+    );
   }
 
   editAlbum({ album }) {
@@ -45,15 +59,22 @@ class AlbumsController {
       component: 'albumFormComponent',
       size: 'lg',
       resolve: {
-          album: () => {
-              return album
-          }
+        album: () => {
+          return album;
+        }
       }
     });
 
     modalInstance.result.then(
       data => {
-        console.log(data);
+        this.AlbumService.updateAlbum(this.collectionId, data).then(
+          response => {
+            this.loadAlbums();
+          },
+          error => {
+            console.error(error);
+          }
+        );
       },
       () => {
         console.log('Closed');
@@ -62,7 +83,14 @@ class AlbumsController {
   }
 
   deleteAlbum({ album }) {
-      console.log(`Delete ${album}`);
+    this.AlbumService.removeAlbumFromCollection(this.collectionId, album.Id).then(
+      response => {
+        this.loadAlbums();
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }
 
