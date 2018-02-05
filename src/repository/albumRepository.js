@@ -90,11 +90,27 @@ function albumRepository(connectionConfig) {
     return promise;
   }
 
+  function searchAlbum(query) {
+    const promise = new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT * from ALBUM WHERE match (Title) AGAINST (? IN NATURAL LANGUAGE MODE);',
+        [query],
+        (error, results) => {
+          if (error) reject(error);
+          resolve(results);
+        }
+      );
+    });
+
+    return promise;
+  }
+
   return {
     getAlbumsFromCollection,
     addAlbumIntoCollection,
     updateAlbum,
-    removeAlbumFromCollection
+    removeAlbumFromCollection,
+    searchAlbum
   };
 }
 

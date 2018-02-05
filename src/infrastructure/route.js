@@ -18,6 +18,9 @@ function router(collectionController, albumController) {
   router.route('/collections/:collectionId/albums/:albumId')
     .put(albumController.updateAlbum)
     .delete(albumController.removeAlbumFromCollection);
+  
+  router.route('/albums')
+    .get(albumController.searchAlbum);
 
   return router;
 }

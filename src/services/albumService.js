@@ -15,7 +15,11 @@ function albumService(albumRepository) {
         return albumRepository.removeAlbumFromCollection(collectionId, albumId);
     }
 
-    return { getAlbumsFromCollection, addAlbumIntoCollection, updateAlbum, removeAlbumFromCollection }
+    function searchAlbum(query) {
+        return albumRepository.searchAlbum(query);
+    }
+
+    return { getAlbumsFromCollection, addAlbumIntoCollection, updateAlbum, removeAlbumFromCollection, searchAlbum }
 }
 
 module.exports = { albumService }

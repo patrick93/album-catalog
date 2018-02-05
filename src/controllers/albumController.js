@@ -37,7 +37,16 @@ function albumController(albumService) {
         });
     }
 
-    return { getAlbumsFromCollection, addAlbumIntoCollection, updateAlbum, removeAlbumFromCollection }
+    function searchAlbum(req, res) {
+        const query = req.query.q;
+        albumService.searchAlbum(query).then(albums => {
+            res.status(200).json(albums);
+        }).catch(error => {
+            res.status(500).send(error);
+        });
+    }
+
+    return { getAlbumsFromCollection, addAlbumIntoCollection, updateAlbum, removeAlbumFromCollection, searchAlbum }
 }
 
 module.exports = {albumController}
