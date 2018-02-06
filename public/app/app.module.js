@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import angular from 'angular';
+import ngMessages from 'angular-messages';
 import uiRouter from '@uirouter/angularjs';
 import uiBootstrap from 'angular-ui-bootstrap';
 
@@ -15,6 +16,7 @@ import { AlbumsModule } from './components/albums/albums.module';
 
 export const AppModule = angular
   .module('app', [
+    ngMessages,
     uiRouter,
     uiBootstrap,
     CommonModule,

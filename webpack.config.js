@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    vendor: ['angular', 'bootstrap', '@uirouter/angularjs'],
+    vendor: ['angular', 'bootstrap', '@uirouter/angularjs', 'angular-ui-bootstrap', 'angular-messages'],
     bundle: __dirname + '/public/app/app.module.js'
   },
   output: {

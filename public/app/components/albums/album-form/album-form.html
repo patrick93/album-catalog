@@ -2,25 +2,37 @@
     <h3 class="modal-title">Album Form</h3>
 </div>
 <div class="modal-body">
-    <form>
-        <div class="form-group">
+    <form name="albumForm" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': albumForm.title.$touched && albumForm.title.$invalid }">
             <label>Title</label>
-            <input type="text" class="form-control" ng-model="$ctrl.album.Title" />
+            <input type="text" name="title" class="form-control" ng-model="$ctrl.album.Title" required />
+            <div class="help-block" ng-messages="albumForm.title.$error" ng-if="albumForm.title.$touched">
+                <span ng-message="required">This field is required</span>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': albumForm.artist.$touched && albumForm.artist.$invalid }">
             <label>Artist</label>
-            <input type="text" class="form-control" ng-model="$ctrl.album.Artist" />
+            <input type="text" name="artist" class="form-control" ng-model="$ctrl.album.Artist" required />
+            <div class="help-block" ng-messages="albumForm.artist.$error" ng-if="albumForm.artist.$touched">
+                <span ng-message="required">This field is required</span>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': albumForm.year.$touched && albumForm.year.$invalid }">
             <label>Year</label>
-            <input type="number" class="form-control" ng-model="$ctrl.album.Year" />
+            <input type="number" name="year" class="form-control" ng-model="$ctrl.album.Year" required />
+            <div class="help-block" ng-messages="albumForm.year.$error" ng-if="albumForm.year.$touched">
+                <span ng-message="required">This field is required</span>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': albumForm.record.$touched && albumForm.record.$invalid }">
             <label>Record</label>
-            <input type="text" class="form-control" ng-model="$ctrl.album.Record_label" />
+            <input type="text" name="record" class="form-control" ng-model="$ctrl.album.Record_label" required />
+            <div class="help-block" ng-messages="albumForm.record.$error" ng-if="albumForm.record.$touched">
+                <span ng-message="required">This field is required</span>
+            </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" ng-click="$ctrl.onSave()">Save</button>
+    <button type="button" class="btn btn-success" ng-click="$ctrl.onSave()" ng-disabled="albumForm.$invalid">Save</button>
 </div>

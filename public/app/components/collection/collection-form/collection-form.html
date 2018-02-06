@@ -2,13 +2,16 @@
     <h3 class="modal-title">Collection Form</h3>
 </div>
 <div class="modal-body">
-    <form>
-        <div class="form-group">
+    <form name="collectionForm" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': collectionForm.name.$touched && collectionForm.name.$invalid }">
             <label>Name</label>
-            <input type="text" class="form-control" ng-model="$ctrl.collection.name" />
+            <input type="text" class="form-control" name="name" ng-model="$ctrl.collection.name" required />
+            <div class="help-block" ng-messages="collectionForm.name.$error" ng-if="collectionForm.name.$touched">
+                <span ng-message="required">This field is required</span>
+            </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" ng-click="$ctrl.onSave()">Save</button>
+    <button type="button" class="btn btn-success" ng-click="$ctrl.onSave()" ng-disabled="collectionForm.$invalid">Save</button>
 </div>
