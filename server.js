@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { router } = require('./src/infrastructure/route');
+const { databaseConnectionConfig } = require('./src/config/config');
 const { collectionController } = require('./src/controllers/collectionController');
 const { collectionService } = require('./src/services/collectionService');
 const { collectionRepository } = require('./src/repository/collectionRepository');
@@ -8,18 +9,11 @@ const { albumController } = require('./src/controllers/albumController');
 const { albumService } = require('./src/services/albumService');
 const { albumRepository } = require('./src/repository/albumRepository');
 
-const connectionInfo = {
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'albums_collection'
-};
-
-const _collectionRepository = collectionRepository(connectionInfo);
+const _collectionRepository = collectionRepository(databaseConnectionConfig);
 const _collectionService = collectionService(_collectionRepository);
 const _collectionController = collectionController(_collectionService);
 
-const _albumRepository = albumRepository(connectionInfo);
+const _albumRepository = albumRepository(databaseConnectionConfig);
 const _albumService = albumService(_albumRepository);
 const _albumController = albumController(_albumService);
 
