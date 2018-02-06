@@ -1,0 +1,11 @@
+.search .search-form {
+    margin-bottom: 20px;
+}
+
+.search .search-form .form-group {
+    width: 93%;
+}
+
+.search .search-form .search-input {
+    width: 100%;
+}

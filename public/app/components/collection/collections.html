@@ -1,17 +1,19 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <span class="panel-title" style="font-weight: 500;">Collections</span>
-        <button class="btn btn-success btn-xs" style="float: right" ng-click="$ctrl.addCollection()">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <div class="panel-body">
-        <div class="list-group">
-            <div class="list-group-item list-group-item-action" ng-repeat="collection in $ctrl.collections">
-                <a ui-sref="albums({collectionId: collection.Id})">{{collection.Name}}</a>
-                <div style="float: right">
-                    <span class="fa fa-pencil" style="margin-right: 5px; cursor: pointer;" ng-click="$ctrl.editCollection(collection)"></span>
-                    <span class="fa fa-trash" style=" cursor: pointer;" ng-click="$ctrl.deleteCollection(collection.Id)"></span>
+<div class="collections">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="panel-title">Collections</span>
+            <button class="btn btn-success btn-xs add-button" ng-click="$ctrl.addCollection()">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <div class="list-group-item list-group-item-action" ng-repeat="collection in $ctrl.collections">
+                    <a ui-sref="albums({collectionId: collection.Id})">{{collection.Name}}</a>
+                    <div class="button-group">
+                        <span class="fa fa-pencil edit-button" ng-click="$ctrl.editCollection(collection)"></span>
+                        <span class="fa fa-trash delete-button" ng-click="$ctrl.deleteCollection(collection.Id)"></span>
+                    </div>
                 </div>
             </div>
         </div>

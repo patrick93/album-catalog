@@ -1,17 +1,19 @@
-<form class="form-inline" ng-submit="$ctrl.search()" style="margin-bottom: 20px">
-    <div class="form-group" style="width:93%;">
-        <input type="text" ng-model="$ctrl.searchValue" class="form-control" style="width: 100%;">
-    </div>
-    <button type="submit" class="btn btn-default">Search</button>
-</form>
-<div class="row">
-    <div class="col-md-12">
-        <div class="list-group">
-            <div class="list-group-item" ng-repeat="album in $ctrl.albums">
-                <h4 class="list-group-item-heading">{{album.Title}}</h4>
-                <p class="list-group-item-text">{{album.Artist}}</p>
-                <div>
-                    <small>{{album.Record_label}} - {{album.Year}}</small>
+<div class="search">
+    <form class="form-inline search-form" ng-submit="$ctrl.search()">
+        <div class="form-group">
+            <input type="text" ng-model="$ctrl.searchValue" class="form-control search-input">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+    </form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="album in $ctrl.albums">
+                    <h4 class="list-group-item-heading">{{album.Title}}</h4>
+                    <p class="list-group-item-text">{{album.Artist}}</p>
+                    <div>
+                        <small>{{album.Record_label}} - {{album.Year}}</small>
+                    </div>
                 </div>
             </div>
         </div>

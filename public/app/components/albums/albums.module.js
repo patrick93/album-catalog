@@ -1,4 +1,6 @@
 import angular from 'angular'
+import './albums.css';
+import './album/album.css'
 
 import { AlbumsComponent } from "./albums.component";
 import { AlbumComponent } from "./album/album.component";

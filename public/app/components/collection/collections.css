@@ -1,0 +1,20 @@
+.collections .panel-title {
+  font-weight: 500;
+}
+
+.collections .add-button {
+  float: right;
+}
+
+.collections .button-group {
+  float: right;
+}
+
+.collections .edit-button {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.collections .delete-button {
+  cursor: pointer;
+}

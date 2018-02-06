@@ -1,4 +1,5 @@
 import angular from 'angular'
+import './collections.css';
 
 import { CollectionsComponent } from "./collections.component";
 import { CollectionFormComponent } from "./collection-form/collection-form.component";

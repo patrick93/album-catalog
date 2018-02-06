@@ -1,4 +1,5 @@
 import angular from 'angular'
+import './search.css'
 
 import { SearchComponent } from "./search.component";
 import { SearchService } from "./search.service";

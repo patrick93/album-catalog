@@ -1,13 +1,15 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <span class="panel-title" style="font-weight: 500;">Albums</span>
-        <button class="btn btn-success btn-xs" style="float: right" ng-click="$ctrl.addAlbum()">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <div class="panel-body">
-        <div class="list-group">
-            <album ng-repeat="album in $ctrl.albums" album="album" on-edit="$ctrl.editAlbum($event)" on-delete="$ctrl.deleteAlbum($event)"></album>
+<div class="albums">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="panel-title">Albums</span>
+            <button class="btn btn-success btn-xs add-button" ng-click="$ctrl.addAlbum()">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <album ng-repeat="album in $ctrl.albums" album="album" on-edit="$ctrl.editAlbum($event)" on-delete="$ctrl.deleteAlbum($event)"></album>
+            </div>
         </div>
     </div>
 </div>
